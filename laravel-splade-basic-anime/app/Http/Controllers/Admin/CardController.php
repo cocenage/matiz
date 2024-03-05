@@ -55,6 +55,7 @@ class CardController extends Controller
         $card->fuel = $request->input('fuel');
         $card->drive = $request->input('drive');
         $card->isActive = $request->input('isActive');
+        $card->card_id = $request->input('card_id');
         $card->image = $request->file('image')->store('public/cards');
         $card->save();
         Toast::title('Услуга добавлена!');

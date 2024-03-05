@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Card;
+use App\Models\Feedback;
 use App\Models\Order;
 use App\Models\Review;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use ProtoneMedia\Splade\Facades\Toast;
 use ProtoneMedia\Splade\SpladeTable;
@@ -17,18 +19,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.cards.index', [
-            'cards' => SpladeTable::for(Card::class)
+        $cards = Card::pluck('name', 'id')->toArray();
+        return view('admin.orders.index', [
+            'order' => SpladeTable::for(Order::class)
                 ->withGlobalSearch(columns: ['name', 'surname'])
-                ->column('name', label: "имя", sortable: true)
-                ->column('surname', label: "фамилия")
-                ->column('number', label: "номер телефона")
-                ->column('date_start', label: "стартовая дата")
-                ->column('date_end', label: "конечная дата")
-                ->column('car', label: "выбор машины")
-                ->column('isActive', label: "актив или пассив")
-                ->column('action', label: "Действие", canBeHidden: false)
-                ->paginate(10)
+                ->selectFilter('card_id', $cards, label: "статусы")
+                ->column('name', label: 'имя')
+                ->column('surname', label: 'фамилюс')
+                ->column('number', label: 'номер')
+                ->column('date_start', label: 'дата старт')
+                ->column('date_end', label: 'дата end')
+
+                ->column('isActive', label: 'актив пасив')
+                ->column('action', label: 'Действие')
         ]);
     }
 
@@ -37,7 +40,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('admin.orders.create');
+        $cards = Card::pluck('name', 'id')->toArray();
+        return view('admin.orders.create', compact('cards'));
+
     }
 
     /**
@@ -51,10 +56,11 @@ class OrderController extends Controller
         $order->number = $request->input('number');
         $order->date_start = $request->input('date_start');
         $order->date_end = $request->input('date_end');
-        $order->car = $request->input('car');
+
         $order->isActive = $request->input('isActive');
+        $order->card_id = $request->input('card_id');
         $order->save();
-        Toast::title('Новый заказ добавлен. Нам на него все равно.');
+        Toast::title('Новая заявка успешно добавлена');
         return redirect()->route('orders.index');
     }
 
@@ -71,6 +77,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+//        $statuses = Status::pluck('title', 'id')->toArray();
         return view('admin.orders.edit', compact('order'));
     }
 
@@ -79,15 +86,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+
         $order->name = $request->input('name');
         $order->surname = $request->input('surname');
         $order->number = $request->input('number');
         $order->date_start = $request->input('date_start');
         $order->date_end = $request->input('date_end');
-        $order->car = $request->input('car');
+
         $order->isActive = $request->input('isActive');
+
         $order->save();
-        Toast::title('заказ обновлен!');
+        Toast::title('заявка обновлена!');
         return redirect()->route('orders.index');
     }
 
@@ -97,7 +106,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        Toast::title('Отзыв удален');
+        Toast::title('заявка удалена');
         return redirect()->route('orders.index');
     }
 }

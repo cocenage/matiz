@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('drive')->comment('привод');
             $table->string('image')->default('Фото машины');
             $table->boolean('isActive')->default(0)->comment('Статус кейса');
+
             $table->timestamps();
         });
     }

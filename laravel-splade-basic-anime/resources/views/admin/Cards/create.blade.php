@@ -11,6 +11,7 @@
    </x-slot>
        <div class="my-4 p-4 bg-white max-w-3xl mx-auto rounded-md">
            <x-splade-form action="{{ route('cards.store') }}">
+
                <x-splade-input name="name" label="{{ __('Название бибика') }}" />
                <x-splade-input name="rent" label="{{ __('аренда') }}" />
                <x-splade-input name="volume" label="{{ __('объем') }}" />

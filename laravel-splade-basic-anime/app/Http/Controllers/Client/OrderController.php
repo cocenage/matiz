@@ -10,7 +10,7 @@ use ProtoneMedia\Splade\Facades\Toast;
 
 class OrderController extends Controller
 {
-    public function order(Request $request){
+    public function store(Request $request){
 
         $orders = new Order();
         $orders->name = $request->input('name');
@@ -18,10 +18,10 @@ class OrderController extends Controller
         $orders->number = $request->input('number');
         $orders->date_start = $request->input('date_start');
         $orders->date_end = $request->input('date_end');
-        $orders->car = $request->input('car');
-        $orders->isActive = $request->input('isActive');
+        $orders->card_id = $request->input('card_id');
+        $orders->isActive = 1;
         $orders->save();
         Toast::title('заказ обновлен!');
-        return redirect()->route('orders.index');
+        return redirect()->route('client.index');
     }
 }

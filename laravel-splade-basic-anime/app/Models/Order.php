@@ -17,7 +17,7 @@ class Order extends Model
         'number',
         'date_start',
         'date_end',
-        'car',
-        'isActive'
+        'isActive',
+        'card_id'
     ];
 }

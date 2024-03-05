@@ -45,5 +45,8 @@ Route::middleware(['splade'])->group(function () {
 
     });
 
-    Route::get('/', [\App\Http\Controllers\Client\IndexController::class, 'index'])->name('client.index');
+//    Route::post('/order', [\App\Http\Controllers\Client\OrderController::class, 'store'])->name('order.store');
 });
+
+Route::get('/', [\App\Http\Controllers\Client\IndexController::class, 'index'])->name('client.index');
+Route::post('/order/post', [\App\Http\Controllers\Client\IndexController::class, 'store'])->name('order.store');

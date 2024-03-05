@@ -860,38 +860,44 @@
                     </div>
                     <div class="order__order-content">
                         <div class="order__content-img">
-                            <img src="/img/Rectangle 191.png" alt="выбранное авто" class="order__img">
+                            <img src="{{ asset('/assets/images/Rectangle 191.png') }}" alt="выбранное авто" class="order__img">
                         </div>
                         <div class="order__content-form">
-                            <form action="" class="order__form">
+                            <form class="order__form" action="{{ route('client.order') }}" enctype="multipart/form-data" method="POST">
+                                @method('POST')
+                                @csrf
                                 <label for="" class="order__form-text">Имя:</label>
-                                <input required type="text" placeholder="Мориарти" class="order__form-input">
+                                <input required type="text" name="name" placeholder="Мориарти" class="order__form-input">
 
                                 <label for="" class="order__form-text">Фамилия:</label>
-                                <input required type="text" placeholder="Ефремов" class="order__form-input">
+                                <input required type="text" name="surname" placeholder="Ефремов" class="order__form-input">
 
                                 <label for="" class="order__form-text">Номер телефона:</label>
-                                <input required type="tel" placeholder="88007438428" class="order__form-input">
+                                <input required type="tel" name="number" placeholder="88007438428" class="order__form-input">
 
                                 <label required for="" class="order__form-text">Машина:</label>
-                                <select name="" id="" class="order__form-input">
-                                    <option value="Daewoo Matiz" class="order__input-select">Daewoo Matiz</option>
-                                    <option value="Audi A6" class="order__input-select">Audi A6</option>
-                                    <option value="BMW 5" class="order__input-select">BMW 5</option>
-                                    <option value="Jaguar XF" class="order__input-select">Jaguar XF</option>
+                                <select name="card_id" id="" class="order__form-input">
+                                    @forelse($cards AS $card)
+                                        <option value="{{ $card->id }}" class="order__input-select">{{$card->name}}</option>
+                                    @empty
+                                        {{__('Данных нет')}}
+                                    @endforelse
+
+
+
                                 </select>
                                 <div class="order__fotm-arend">
                                     <div class="order__arend-input">
                                         <label required for="" class="order__form-text">Начало аренды:</label>
-                                        <input type="date" placeholder="12.12.2002"  class="order__input">
+                                        <input name="date_start" type="date" placeholder="12.12.2002"  class="order__input">
                                     </div>
                                     <div class="order__arend-input">
                                         <label required for="" class="order__form-text">Конец аренды:</label>
-                                        <input type="date" placeholder="1.2.2003"  class="order__input">
+                                        <input name="date_end" type="date" placeholder="1.2.2003"  class="order__input">
                                     </div>
                                 </div>
                                 <div class="order__form-button">
-                                    <button class="order__button">Заказать</button>
+                                    <button type="submit" class="order__button">Заказать</button>
                                 </div>
 
 

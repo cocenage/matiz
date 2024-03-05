@@ -18,8 +18,7 @@ return new class extends Migration
             $table->text('number');
             $table->text('date_start');
             $table->string('date_end');
-            $table->string('date_end');
-            $table->boolean('car')->default('0');
+            $table->foreignId('card_id')->constrained()->cascadeOnDelete();
             $table->boolean('isActive')->default('0');
             $table->timestamps();
         });
