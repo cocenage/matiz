@@ -4,7 +4,7 @@
             <div class="footer__wrapper">
                 <div class="footer__main" >
                     <div class="footer__main-logo">
-                        <img src="{{ asset('/assets/images/svg/Group 26.svg') }}" class="footer__logo" alt="лого">
+                        <img src="<?php echo e(asset('/assets/images/svg/Group 26.svg')); ?>" class="footer__logo" alt="лого">
                         <h1 class="footer__logo-text">Контактная информация</h1>
                     </div>
                     <div class="footer__main-contact">
@@ -19,17 +19,17 @@
                                     <p class="footer__text">Женя</p>
                                 </div>
 
-{{--                                <div class="footer__number-icon">--}}
-{{--                                    <a href="" class="footer__icon">--}}
-{{--                                        <img src="img/svg/bxl-telegram 1.svg" alt="телеграмм" class="footer__icon-img">--}}
-{{--                                    </a>--}}
-{{--                                    <a href="" class="footer__icon">--}}
-{{--                                        <img src="img/svg/bxl-vk 1.svg" alt="вк" class="footer__icon-img">--}}
-{{--                                    </a>--}}
-{{--                                    <a href="" class="footer__icon">--}}
-{{--                                        <img src="img/svg/social_yomuxilajcsr 1.svg" alt="одноклассники" class="footer__icon-img">--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
+
+
+
+
+
+
+
+
+
+
+
 
                             </div>
 
@@ -52,3 +52,4 @@
     </div>
 
 </footer>
+<?php /**PATH C:\OSPanel\domains\popa\matiz\laravel-splade-basic-anime\resources\views/client/include/footer.blade.php ENDPATH**/ ?>

@@ -42,11 +42,12 @@ Route::middleware(['splade'])->group(function () {
         Route::resource('galleries', \App\Http\Controllers\Admin\GalleryController::class);
         Route::resource('reviews', \App\Http\Controllers\Admin\ReviewController::class);
         Route::resource('orders', \App\Http\Controllers\Admin\OrderController::class);
+        Route::resource('mains', \App\Http\Controllers\Admin\MainController::class);
 
     });
 
-//    Route::post('/order', [\App\Http\Controllers\Client\OrderController::class, 'store'])->name('order.store');
+   Route::post('/order', [\App\Http\Controllers\Client\OrderController::class, 'store'])->name('order.store');
 });
 
 Route::get('/', [\App\Http\Controllers\Client\IndexController::class, 'index'])->name('client.index');
-Route::post('/order/post', [\App\Http\Controllers\Client\IndexController::class, 'store'])->name('order.store');
+

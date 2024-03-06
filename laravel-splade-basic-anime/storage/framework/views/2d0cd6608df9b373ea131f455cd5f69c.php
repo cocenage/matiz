@@ -1,9 +1,9 @@
-@extends('client.layout.layout')
-{{-- Заголовок для страницы --}}
-@section('title') {{ __('Главная страница') }} @endsection
-{{-- Контент для страницы --}}
-@section('content')
-    <section class="main-wrapper__section slider" id="slider"   style="background-image: url('{{ asset('/assets/images/main.png') }}');" >
+
+
+<?php $__env->startSection('title'); ?> <?php echo e(__('Главная страница')); ?> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <section class="main-wrapper__section slider" id="slider"   style="background-image: url('<?php echo e(asset('/assets/images/main.png')); ?>');" >
         <div class="container slider__container" id="main">
             <div class="slider__inner">
                 <div class="slider__wrapper">
@@ -85,29 +85,29 @@
                 <div class="cards__title-tabs">
                     <div class="cards__tabs-content">
                         <div class="cards__content-img">
-                            <img src="{{ asset('/assets/images/Group 25.png') }}" alt="" class="cards__img-circle" id="one">
-                            <img src="{{ asset('/assets/images/biznes.png') }}" alt="машины бизнес класс"  id="onne" class="cards__img">
+                            <img src="<?php echo e(asset('/assets/images/Group 25.png')); ?>" alt="" class="cards__img-circle" id="one">
+                            <img src="<?php echo e(asset('/assets/images/biznes.png')); ?>" alt="машины бизнес класс"  id="onne" class="cards__img">
                         </div>
                         <p class="cards__content-tabs" id="accent" >Бизнес</p>
                     </div>
                     <div class="cards__tabs-content">
                         <div class="cards__content-img">
-                            <img src="{{ asset('/assets/images/Group 25.png') }}" alt="" class="cards__img-circle" id="two">
-                            <img src="{{ asset('/assets/images/2009 Rolls-Royce Ghost 014 1.png') }}"  id="ttwo" alt="машины премиум класс" class="cards__img">
+                            <img src="<?php echo e(asset('/assets/images/Group 25.png')); ?>" alt="" class="cards__img-circle" id="two">
+                            <img src="<?php echo e(asset('/assets/images/2009 Rolls-Royce Ghost 014 1.png')); ?>"  id="ttwo" alt="машины премиум класс" class="cards__img">
                         </div>
                         <p class="cards__content-tabs" id="accent1" >Премиум</p>
                     </div>
                     <div class="cards__tabs-content">
                         <div class="cards__content-img">
-                            <img src="{{ asset('/assets/images/Group 25.png') }}" alt="" class="cards__img-circle" id="fre">
-                            <img src="{{ asset('/assets/images/2009 Rolls-Royce Ghost 014 1.png') }}" alt="машины внедорожник класс"  id="frre" class="cards__img">
+                            <img src="<?php echo e(asset('/assets/images/Group 25.png')); ?>" alt="" class="cards__img-circle" id="fre">
+                            <img src="<?php echo e(asset('/assets/images/2009 Rolls-Royce Ghost 014 1.png')); ?>" alt="машины внедорожник класс"  id="frre" class="cards__img">
                         </div>
                         <p class="cards__content-tabs" id="accent2" >Внедорожник</p>
                     </div>
                     <div class="cards__tabs-content">
                         <div class="cards__content-img">
-                            <img src="{{ asset('/assets/images/Group 25.png') }}" alt="" class="cards__img-circle" id="fo">
-                            <img src="{{ asset('/assets/images/Remove-bg 3.png') }}" alt="машины спорткар класс"  id="ffo" class="cards__img">
+                            <img src="<?php echo e(asset('/assets/images/Group 25.png')); ?>" alt="" class="cards__img-circle" id="fo">
+                            <img src="<?php echo e(asset('/assets/images/Remove-bg 3.png')); ?>" alt="машины спорткар класс"  id="ffo" class="cards__img">
                         </div>
                         <p class="cards__content-tabs" id="accent3" >Спорткар</p>
                     </div>
@@ -117,37 +117,37 @@
                     <p class="cards__filter-moch">Мощность ˄</p>
                 </div>
                 <ul class="cards__list">
-                    @forelse($cards as $card)
+                    <?php $__empty_1 = true; $__currentLoopData = $cards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <li class="cards__item" id="bis1">
                         <article class="cards__card">
-                            <img loading="lazy"  src="{{ Storage::url($card->image) }}" alt="Изображение машины" class="cards__card-img">
+                            <img loading="lazy"  src="<?php echo e(Storage::url($card->image)); ?>" alt="Изображение машины" class="cards__card-img">
                             <div class="cards__card-main">
-                                <h3 class="cards__main-text">{{ $card->name }}</h3>
+                                <h3 class="cards__main-text"><?php echo e($card->name); ?></h3>
                             </div>
                             <div class="cards__card-content">
                                 <div class="cards__content-text">
                                     <p class="cards__text-name">Аренда</p>
-                                    <p class="cards__text-info">{{ $card->rent }}</p>
+                                    <p class="cards__text-info"><?php echo e($card->rent); ?></p>
                                 </div>
                                 <div class="cards__content-text">
                                     <p class="cards__text-name">Объем</p>
-                                    <p class="cards__text-info">{{ $card->volume }}</p>
+                                    <p class="cards__text-info"><?php echo e($card->volume); ?></p>
                                 </div>
                                 <div class="cards__content-text">
                                     <p class="cards__text-name">Мощность</p>
-                                    <p class="cards__text-info">{{ $card->power }}</p>
+                                    <p class="cards__text-info"><?php echo e($card->power); ?></p>
                                 </div>
                                 <div class="cards__content-text">
                                     <p class="cards__text-name">Коробка</p>
-                                    <p class="cards__text-info">{{ $card->box }}</p>
+                                    <p class="cards__text-info"><?php echo e($card->box); ?></p>
                                 </div>
                                 <div class="cards__content-text">
                                     <p class="cards__text-name">Топливо</p>
-                                    <p class="cards__text-info">{{ $card->fuel }}</p>
+                                    <p class="cards__text-info"><?php echo e($card->fuel); ?></p>
                                 </div>
                                 <div class="cards__content-text">
                                     <p class="cards__text-name">Привод</p>
-                                    <p class="cards__text-info">{{ $card->drive }}</p>
+                                    <p class="cards__text-info"><?php echo e($card->drive); ?></p>
                                 </div>
                                 <div class="cards__card-button">
                                     <button class="cards__button">Забронировать</button>
@@ -157,9 +157,10 @@
 
                         </article>
                     </li>
-                    @empty
-                        {{__('карточек нет')}}
-                    @endforelse
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                        <?php echo e(__('карточек нет')); ?>
+
+                    <?php endif; ?>
 
                     <li class="cards__item" id="prem1">
                         <article class="cards__card">
@@ -610,11 +611,12 @@
                     <div class="gallery__photo-block flex w-20 gap-3" style="width: 20%; display: flex;
     gap: 10px;
     flex-wrap: nowrap;">
-                        @forelse($galleries as $gallery)
-                            <img src="{{ Storage::url($gallery->image) }}" id="myImg"   data-fancybox="gallery" alt="" class="gallery__img">
-                        @empty
-                            {{__('карточек нет')}}
-                        @endforelse
+                        <?php $__empty_1 = true; $__currentLoopData = $galleries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gallery): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <img src="<?php echo e(Storage::url($gallery->image)); ?>" id="myImg"   data-fancybox="gallery" alt="" class="gallery__img">
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <?php echo e(__('карточек нет')); ?>
+
+                        <?php endif; ?>
 
 
                         <div id="myModal" class="modal">
@@ -625,11 +627,11 @@
                     </div>
                     <!-- Trigger the Modal -->
 
-{{--                    <div class="gallery__photo">--}}
 
-{{--                        <img  src="img/image 24.png"  id="qwee" class="gallery__img">--}}
 
-{{--                    </div>--}}
+
+
+
 
 
                     <!-- The Modal -->
@@ -698,104 +700,105 @@
                     <div class="reviews__descr swiper">
                         <div class="swiper-wrapper reviews__descr" style=" display: flex; gap: 30px; user-select: none;" >
                             <div class="swiper-slide reviews__descr-content" style="display: flex; flex-wrap: wrap;">
-                                @forelse($reviews as $review)
+                                <?php $__empty_1 = true; $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <div class="reviews__content-review">
                                         <div class="reviews__review-name">
                                             <div class="reviews__name">
                                                 <div class="reviews__name-content" style="justify-content: space-around;">
-                                                    <h3 class="reviews__content-text" style="margin-left: 10px; ">{{ $review->name }}</h3>
+                                                    <h3 class="reviews__content-text" style="margin-left: 10px; "><?php echo e($review->name); ?></h3>
                                                     <div class="reviews__content-stars">
-                                                        @if($review->rating == 1)
-                                                            <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">
-                                                        @elseif($review->rating == 2)
-                                                            <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">
-                                                        @elseif($review->rating == 3)
-                                                            <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">
-                                                        @elseif($review->rating == 4)
-                                                            <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">
-                                                        @elseif($review->rating == 5)
-                                                            <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">  <img src="{{ asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg') }}" alt="" class="reviews__stars">
-                                                        @endif
+                                                        <?php if($review->rating == 1): ?>
+                                                            <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">
+                                                        <?php elseif($review->rating == 2): ?>
+                                                            <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">
+                                                        <?php elseif($review->rating == 3): ?>
+                                                            <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">
+                                                        <?php elseif($review->rating == 4): ?>
+                                                            <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">
+                                                        <?php elseif($review->rating == 5): ?>
+                                                            <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">  <img src="<?php echo e(asset('/assets/images/svg/star_6uw3mlgd55bi 11.svg')); ?>" alt="" class="reviews__stars">
+                                                        <?php endif; ?>
 
 
 
                                                     </div>
                                                 </div>
                                                 <div class="reviews__name-order">
-                                                    <img src="{{ asset('/assets/images/svg/keys_rzqydpxvbjs1 4.svg') }}" alt="заказы" class="reviews__order">
-                                                    <p class="reviews__order-text">{{ $review->order }}</p>
+                                                    <img src="<?php echo e(asset('/assets/images/svg/keys_rzqydpxvbjs1 4.svg')); ?>" alt="заказы" class="reviews__order">
+                                                    <p class="reviews__order-text"><?php echo e($review->order); ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="reviews__review-text">
-                                            <p class="reviews__text">{{ $review->text }}</p>
+                                            <p class="reviews__text"><?php echo e($review->text); ?></p>
                                         </div>
                                     </div>
-                                @empty
-                                    {{__('отзывов нет')}}
-                                @endforelse
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <?php echo e(__('отзывов нет')); ?>
+
+                                <?php endif; ?>
 
 
                             </div>
-{{--                            <div class="swiper-slide reviews__descr-content" style="display: flex; ">--}}
-{{--                                <div class="reviews__content-review">--}}
-{{--                                    <div class="reviews__review-name">--}}
-{{--                                        <div class="reviews__name">--}}
-{{--                                            <div class="reviews__name-content">--}}
-{{--                                                <h3 class="reviews__content-text">Абидлов Андрей</h3>--}}
-{{--                                                <div class="reviews__content-stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="reviews__name-order">--}}
-{{--                                                <img src="/img/svg/keys_rzqydpxvbjs1 4.svg" alt="заказы" class="reviews__order">--}}
-{{--                                                <p class="reviews__order-text">3 заказа</p>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="reviews__review-text">--}}
-{{--                                        <p class="reviews__text">“Взял впервые машину. Пришлось, так как свою--}}
-{{--                                            бэху проиграл какому-то Мориарти. И решил--}}
-{{--                                            сделать заказ . И что скажу! Машины--}}
-{{--                                            замечатльные, красивые и дешевые! Советую--}}
-{{--                                            к покупке!“</p>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="reviews__content-review">--}}
-{{--                                    <div class="reviews__review-name">--}}
-{{--                                        <div class="reviews__name">--}}
-{{--                                            <div class="reviews__name-content">--}}
-{{--                                                <h3 class="reviews__content-text">Мориарти Ефремов</h3>--}}
-{{--                                                <div class="reviews__content-stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                    <img src="/img/svg/star_6uw3mlgd55bi 11.svg" alt="" class="reviews__stars">--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="reviews__name-order">--}}
-{{--                                                <img src="/img/svg/keys_rzqydpxvbjs1 4.svg" alt="заказы" class="reviews__order">--}}
-{{--                                                <p class="reviews__order-text">3 заказа</p>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="reviews__review-text">--}}
-{{--                                        <p class="reviews__text">“Здесь я всегда заказываю свою лучшую тачку!--}}
-{{--                                            Матиз пушка гонка! Теперь постоянно буду--}}
-{{--                                            здесь арендовать его!! Машина чистая, модная--}}
-{{--                                            повреждений нет, так же и поломок, сама цена--}}
-{{--                                            не большая, вообщем пушка гонка! И играйте в--}}
-{{--                                            авакадо. Ой, авадо“</p>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
 
-{{--                            </div>--}}
-{{--                        </div>--}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div class="swiper-pagination"></div>
 
 
@@ -862,12 +865,12 @@
                     </div>
                     <div class="order__order-content">
                         <div class="order__content-img">
-                            <img src="{{ asset('/assets/images/Rectangle 191.png') }}" alt="выбранное авто" class="order__img">
+                            <img src="<?php echo e(asset('/assets/images/Rectangle 191.png')); ?>" alt="выбранное авто" class="order__img">
                         </div>
                         <div class="order__content-form">
-                            <form class="order__form" action="{{ route('order.store') }}" enctype="multipart/form-data" method="POST">
+                            <form class="order__form" action="<?php echo e(route('order.store')); ?>" enctype="multipart/form-data" method="POST">
 
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <label for="" class="order__form-text">Имя:</label>
                                 <input required type="text" name="name" placeholder="Мориарти" class="order__form-input">
 
@@ -879,11 +882,12 @@
 
                                 <label required for="" class="order__form-text">Машина:</label>
                                 <select name="card_id" id="" class="order__form-input">
-                                    @forelse($cards AS $card)
-                                        <option value="{{ $card->id }}" class="order__input-select">{{$card->name}}</option>
-                                    @empty
-                                        {{__('Данных нет')}}
-                                    @endforelse
+                                    <?php $__empty_1 = true; $__currentLoopData = $cards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                        <option value="<?php echo e($card->id); ?>" class="order__input-select"><?php echo e($card->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                        <?php echo e(__('Данных нет')); ?>
+
+                                    <?php endif; ?>
 
 
 
@@ -912,4 +916,6 @@
         </div>
     </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('client.layout.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\OSPanel\domains\popa\matiz\laravel-splade-basic-anime\resources\views/client/index.blade.php ENDPATH**/ ?>
